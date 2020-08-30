@@ -1,0 +1,30 @@
+<div class= "row">
+<h1>Editing Book</h1>
+
+<%= form_for @book do |f| %>
+  <% if @book.errors.any? %>
+      <h2><%= @book.errors.count %>件のerrorが発生しました。</h2>
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+
+  <%= form_for(@book, url:"/books/#{@book.id}") do |f| %>
+<div class ="field row">
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+</div>
+<div class ="field row">
+  <%= f.label :opinion %><br>
+  <%= f.text_area :body %><br>
+</div>
+<div class ="acction row">
+  <%= f.submit 'Update Book' %>
+</div>
+ <% end %>
+
+  <%= link_to "Show", book_path %>|<%= link_to "Back", books_path %>
+</div>
+<% end %>
