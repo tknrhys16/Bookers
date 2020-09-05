@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+
 before_action :authenticate_user! #ログイン済ユーザーのみにアクセスを許可するヘルパー　境界線
+before_action :correct_user, only: [:edit, :update]
 
 def index
   @books = Book.all
@@ -15,7 +17,7 @@ end
 def show
   @user = User.find(params[:id])
   @books = @user.books    #bookとuserの紐づけ
-  @book = Book.new
+  @book = Book.new  #ここでパラムスを使うとuserのIDが入ってしまう
 end
 
 def update
@@ -54,9 +56,8 @@ end
   end
 
   def correct_user
-    book = Book.find(params[:id])#本のデータをとってくる
-    user = book.user#上記の本を投稿したユーザー
-    redirect_to user_path if current_user != user
+    user = User.find(params[:id])
+    redirect_to user_path(current_user) if current_user != user
   end
 
 end

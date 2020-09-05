@@ -7,22 +7,24 @@
     	<h2>Book detail</h2>
     	<table class="table">
           <tbody>
-            <tr><td><div>
-                <%= link_to user_path do |user| %>
+            <td><div>
+              <%= link_to @book.user.name, user_path(@book.user) %><!--()の中身にはその個人のものにしないといけない(@book)だとだめ。-->
+              <%= link_to user_path(@book.user) do %>
               <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></div></td>
+              <% end %>
+
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
 
               <% if  @book.user == current_user %>
-              <td><%= link_to "Edit", edit_book_path(@book) %></td>
-              <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
+              <td><%= link_to "Edit", edit_book_path(@book), class:"btn-sm btn-success edit_book_37466" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, class:"btn-sm btn-danger destroy_book_37466" %></td>
               <% end %>
-              <% end %>
+
 
             </tr>
           </tbody>
         </table>
     </div>
   </div>
-</div>
 </div>
