@@ -1,4 +1,6 @@
+<div class= "container">
 <div class= "row">
+  <div class = "col-md-6 col-md-offset-3">
 <h1>Editing Book</h1>
 
 <%= form_for @book do |f| %>
@@ -14,17 +16,19 @@
   <%= form_for(@book, url:"/books/#{@book.id}") do |f| %>
 <div class ="field row">
   <%= f.label :title %><br>
-  <%= f.text_field :title %><br>
+  <%= f.text_field :title, class:"col-xs-12 book_title" %><br>
 </div>
 <div class ="field row">
   <%= f.label :opinion %><br>
-  <%= f.text_area :body %><br>
+  <%= f.text_area :body, class:"col-xs-12 book_body" %><br>
 </div>
 <div class ="acction row">
-  <%= f.submit 'Update Book' %>
+  <%= f.submit 'Update Book', class:"btn btn-primary col-xs-12 uup" %>
 </div>
  <% end %>
 
   <%= link_to "Show", book_path %>|<%= link_to "Back", books_path %>
+</div>
+</div>
 </div>
 <% end %>

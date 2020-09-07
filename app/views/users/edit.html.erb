@@ -1,5 +1,17 @@
 <h1>User info</h1>
 
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+      <h2><%= @user.errors.count %>件のerrorが発生しました。</h2>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+  <% end %>
+  <% end %>
+
+
 <%= form_for(@user) do |f| %>
 
   <h4>Name</h4>

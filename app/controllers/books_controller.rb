@@ -46,6 +46,7 @@ class BooksController < ApplicationController
     #@user = User.find(params[:id])
     @book = Book.find(params[:id])#なにかのID
     @user = User.find(@book.user_id)#@bookは上のbook
+    @booknew = Book.new
   end
 
   def top

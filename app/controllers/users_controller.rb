@@ -25,11 +25,10 @@ def update
     if @user.update(user_params)
     redirect_to user_path(@user.id), notice:'successfully'
     else
+      flash[:danger] = @user.errors.full_messages
       render :new
     end
 end
-
-
 
  def create
   	@book = Book.new(book_params)
@@ -37,6 +36,7 @@ end
     if @book.save
       redirect_to books_path, notice:'successfully'
     else
+      flash[:danger] = @user.errors.full_messages
       #flash.now[:alert] = 'error'
       #redirect_to user_path
       render :new

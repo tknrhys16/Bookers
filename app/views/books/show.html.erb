@@ -1,8 +1,9 @@
 
 <div class="body">
+  <%= render 'layouts/notifications' %>
 	<div class="container">
   <div class="row">
-    <%= render 'users/users', user: @user, book: @book %>
+    <%= render 'users/users', user: @user, book: @booknew %>
     <div class="col-xs-9">
     	<h2>Book detail</h2>
     	<table class="table">
